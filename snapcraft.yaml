@@ -1,0 +1,13 @@
+name: slock
+version: 0.1
+vendor: Simon Jentzsch <simon.jentzsch@slock.it>
+summary: the slock-service controlling the blockchain
+description: the service checking for access to a device on the ethereum-blockchain.
+icon: slock_icon.png
+parts:
+   slock:
+     plugin: nodejs 
+     source: git://github.com/slockit/slock-js.git
+services:
+  slock:
+    start: bin/node -e "require('lib/node_modules/slock/src/config.js').start('lib/node_modules/slock/conf/config.json')"

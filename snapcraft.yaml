@@ -9,5 +9,5 @@ parts:
      plugin: nodejs 
      source: git://github.com/slockit/slock-js.git
 services:
-  slock:
-    start: bin/node -e "require('lib/node_modules/slock/src/config.js').start('lib/node_modules/slock/conf/config.json')"
+  slockjs:
+    start : bin/node ./lib/node_modules/slock/bin/slock-snap.js

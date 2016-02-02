@@ -4,10 +4,22 @@ vendor: Simon Jentzsch <simon.jentzsch@slock.it>
 summary: the slock-service controlling the blockchain
 description: the service checking for access to a device on the ethereum-blockchain.
 icon: slock_icon.png
+frameworks:
+  - ethereum
+
 parts:
    slock:
      plugin: nodejs 
      source: git://github.com/slockit/slock-js.git
+
+     files-to-copy:
+       plugin: copy
+       files:
+             bin/arm-node: bin/arm-node
+             bin/nodebinwrapper.sh: slockjs_exec
+
 services:
   slockjs:
-    start : bin/node ./lib/node_modules/slock/bin/slock-snap.js
+    start : slockjs_exec
+      caps:
+      - ethereum_ipc

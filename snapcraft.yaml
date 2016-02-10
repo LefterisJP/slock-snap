@@ -2,12 +2,28 @@ name: slock
 version: 0.1
 vendor: Simon Jentzsch <simon.jentzsch@slock.it>
 summary: the slock-service controlling the blockchain
+architectures: [amd64, armhf]
 description: the service checking for access to a device on the ethereum-blockchain.
 icon: slock_icon.png
+frameworks:
+  - ethereum
+
 parts:
-   slock:
-     plugin: nodejs 
-     source: git://github.com/slockit/slock-js.git
+  slock:
+    plugin: nodejs
+    source: git://github.com/slockit/slock-js.git
+
+  files-to-copy:
+    plugin: copy
+    files:
+      bin/arm-node: bin/arm-node
+      bin/nodebinwrapper.sh: bin/slockjs_exec
+
 services:
   slockjs:
-    start : bin/node ./lib/node_modules/slock/bin/slock-snap.js
+    start: bin/slockjs_exec
+    description: "The slock.it application"
+    caps:
+      - ethereum_ipc
+      - network-client
+      - network-service

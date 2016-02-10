@@ -22,5 +22,8 @@ parts:
 services:
   slockjs:
     start: bin/slockjs_exec
+    description: "The slock.it application"
     caps:
       - ethereum_ipc
+      - network-client
+      - network-service

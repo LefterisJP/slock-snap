@@ -18,6 +18,7 @@ parts:
     files:
       bin/arm-node: bin/arm-node
       bin/nodebinwrapper.sh: bin/slockjs_exec
+      conf/default_config.yaml: conf/config.yaml
 
 services:
   slockjs:
@@ -27,3 +28,4 @@ services:
       - ethereum_ipc
       - network-client
       - network-service
+      - network-admin

@@ -7,6 +7,7 @@ description: the service checking for access to a device on the ethereum-blockch
 icon: slock_icon.png
 frameworks:
   - ethereum
+config: bin/configurator
 
 parts:
   slock:
@@ -18,7 +19,13 @@ parts:
     files:
       bin/arm-node: bin/arm-node
       bin/nodebinwrapper.sh: bin/slockjs_exec
-      conf/default_config.yaml: conf/config.yaml
+      config/configurator.py: bin/configurator
+      config/default_config.yaml: config/default_config.yaml
+
+  configurator:
+    plugin: python2
+    python-packages:
+      - PyYAML
 
 services:
   slockjs:

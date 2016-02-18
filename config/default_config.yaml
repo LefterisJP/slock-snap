@@ -1,27 +1,29 @@
 ---
 modules:
+  debug: {}
   eth:
-    client: "/root/.ethereum/geth.ipc"
+    client: /root/.ethereum/geth.ipc
     contracts:
       doorlock4:
         adr: '0xdf373f3dab2561668e239ca6e43a8c6aaeb3f825'
-        useStorage: false
-        nodeid: 4
-        command: 98
-        open: 0
         close: 255
-        stopOnError: true
+        command: 98
         gpio: 3
-      switch:
-        adr: '0xd463562e37cf461411e16b2f7d945b8ddae2bda9'
-        useStorage: false
-        nodeid: 2
+        nodeid: 4
+        open: 0
         stopOnError: true
+        useStorage: false
+      switch:
+        adr: '0xad5e5a5bc4654dbef0d5cabd7abeb426769c073a'
         gpio: 4
-  debug: {}
-  zway:
-    host: 192.168.1.110
-    port: 8083
+        nodeid: 5
+        command: 37
+        stopOnError: true
+        useStorage: false
   websocket:
     host: slock.it
     port: 8080
+  zway:
+    host: 192.168.1.110
+    port: 8083
+
